@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a4a3e3c5bac8d9140a4710e95ef74612
+guid: f40ad974e2015d3408391593be63e51c
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.001
-    second: {fileID: 2100000, guid: 1fd7f163ecbf5a943b227af95ba11877, type: 2}
+      name: BaseColorFantasma
+    second: {fileID: 2100000, guid: 590ebf9aa921a384ea4d75a1445fe767, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
