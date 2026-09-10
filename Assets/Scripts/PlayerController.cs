@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -10,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject cameraMain;
     [SerializeField]
-    private GameObject enemy;
+    private GameObject enemyRed, enemyPink;
     private Animator ani;
 
     private InputAction moveAction;
@@ -50,7 +51,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        
+        if(ponts == 860)
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
     private void FixedUpdate()
@@ -111,7 +115,6 @@ public class PlayerController : MonoBehaviour
         {
             if (atack)
             {
-                Destroy(enemy);
                 Debug.Log("Sim");
             }
             else
@@ -133,12 +136,17 @@ public class PlayerController : MonoBehaviour
                     lifePlayer.SetActive(false);
                     Destroy(this.gameObject);
                     Debug.Log("Não");
+                    SceneManager.LoadScene(1);
                 }
 
             }
             
         }
             
+    }
+    private void FantasmaMorre()
+    {
+
     }
 
     private void Move()
