@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,15 +17,19 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI textPonts;
+    [SerializeField]
+    private GameObject lifePlayer, lifePlayer2, lifePlayer3;
+    [SerializeField]
+    private AudioSource catAtingido;
 
     [SerializeField]
-    private float speed = 10f;
+    private float speed = 10f, life = 3;
     [SerializeField]
     private int ponts;
     [SerializeField]
     private bool invencivel = false;
     [SerializeField]
-    private bool atack = false;
+    static public bool atack = false;
 
     private Vector2 direction;
     private Vector3 vector3;
@@ -57,7 +62,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.name == "Cube Left")
         {
-            transform.position = new Vector3(4f, 0.5f, -0.3f); ;
+            transform.position = new Vector3(4f, 0.5f, -0.3f);
         }
         else if(other.gameObject.name == "Cube Right")
         {
@@ -70,8 +75,14 @@ public class PlayerController : MonoBehaviour
             textPonts.text = "Pontos: " + ponts;
             Destroy(other.gameObject);
         }
+        if (other.gameObject.CompareTag("Cherry"))
+        {
+            ponts += 100;
+            textPonts.text = "Pontos: " + ponts;
+            Destroy(other.gameObject);
+        }
 
-        if (other.gameObject.CompareTag("Yellow"))
+            if (other.gameObject.CompareTag("Yellow"))
         {
             invencivel = true;
             Debug.Log(invencivel);
@@ -105,8 +116,25 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Destroy(this.gameObject);
-                Debug.Log("Não");
+                catAtingido.Play();
+                life--;
+                if(life == 2)
+                {
+                    lifePlayer3.SetActive(false);
+                    transform.position = new Vector3(4f, 0.5f, -0.3f);
+                }
+                if(life == 1)
+                {
+                    lifePlayer2.SetActive(false);
+                    transform.position = new Vector3(-4f, 0.5f, -0.3f);
+                }
+                if (life == 0)
+                {
+                    lifePlayer.SetActive(false);
+                    Destroy(this.gameObject);
+                    Debug.Log("Não");
+                }
+
             }
             
         }
