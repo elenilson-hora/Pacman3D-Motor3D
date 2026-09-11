@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject cameraMain;
     [SerializeField]
-    private GameObject enemyRed, enemyPink;
     private Animator ani;
 
     private InputAction moveAction;
@@ -87,7 +86,7 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-            if (other.gameObject.CompareTag("Yellow"))
+        if (other.gameObject.CompareTag("Yellow"))
         {
             invencivel = true;
             Debug.Log(invencivel);
