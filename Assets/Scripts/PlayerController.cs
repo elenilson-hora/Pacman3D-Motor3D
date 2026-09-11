@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         ani = GetComponent<Animator>();
+        ponts = 0;
 
         moveAction = InputSystem.actions.FindAction("Move");
 
@@ -51,7 +52,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(ponts == 860)
+        if(ponts >= 1000)
         {
             SceneManager.LoadScene(1);
         }
@@ -99,6 +100,7 @@ public class PlayerController : MonoBehaviour
             atack = true;
             Debug.Log(atack);
             ponts += 200;
+            textPonts.text = "Pontos: " + ponts;
             StartCoroutine(Gray());
             Destroy(other.gameObject);
         }
@@ -115,6 +117,8 @@ public class PlayerController : MonoBehaviour
         {
             if (atack)
             {
+                ponts += 100;
+                textPonts.text = "Pontos: " + ponts;
                 Debug.Log("Sim");
             }
             else
@@ -143,10 +147,6 @@ public class PlayerController : MonoBehaviour
             
         }
             
-    }
-    private void FantasmaMorre()
-    {
-
     }
 
     private void Move()
