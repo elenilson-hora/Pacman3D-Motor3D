@@ -28,7 +28,7 @@ public class EnemyController : MonoBehaviour
             if(PlayerController.atack == false)
             {
                 if(lifeGhost == 4)
-                materialRed.SetTexture("_BaseMap", redTexture);
+                    materialRed.SetTexture("_BaseMap", redTexture);
                 if(lifeGhost == 3)
                     materialRed.SetTexture("_BaseMap", pinkTexture);
                 if (lifeGhost == 2)

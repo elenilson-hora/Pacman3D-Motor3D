@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         ani = GetComponent<Animator>();
         ponts = 0;
+        atack = false;
 
         moveAction = InputSystem.actions.FindAction("Move");
 
